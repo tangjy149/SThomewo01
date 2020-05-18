@@ -44,34 +44,64 @@ public class StudentManager {
     private static void exit() {
         System.exit(0);
     }
-
+    
 
     //修改
     private static void updateStu() {
         System.out.println("修改！");
         System.out.println("输入Sid：");
         int id = shuru.nextInt();
-        Student s = stu.get(id);
-        System.out.println("输入SbirthDay：");
-        s.setSbirthDay(shuru.next());
+        /*
+        43.入口对象是否都被进行了判断不为空
+        */
+        if(id != null){
+            Student s = stu.get(id);
+            System.out.println("输入SbirthDay：");
+            s.setSbirthDay(shuru.next());
 
-        stu.put(s.getSid(), s);
-        System.out.println("修改成功！");
+            stu.put(s.getSid(), s);
+            System.out.println("修改成功！");
+        }else{
+            System.out.println("id为空，修改失败");
+        }
+
+        /*
+        46.是否函数的所有分支都有返回值
+        */
+        return ;
+        
     }
 
     //删除
     private static void deleteStu() {
         System.out.println("删除！");
         System.out.println("输入Sid：");
+        
         int id = shuru.nextInt();
-        Student s = new Student();
-        s.setSid(id);
+        /*
+        43.入口对象是否都被进行了判断不为空
+        */
+        if(id != null){
+            Student s = new Student();
+            s.setSid(id);
 
-        stu.remove(s.getSid());
-        System.out.println("删除成功！");
-        //Student.Max--;
+            stu.remove(s.getSid());
+            System.out.println("删除成功！");
+        }
+        else{
+            System.out.println("sid为空，修改失败");
+        }
+        /*
+        46.是否函数的所有分支都有返回值
+        */
+        return ;
     }
-
+    /*
+        8.函数是否已经有文档注释？（功能、输入、返回及其他可选）
+        功能：查询学生信息
+        输入：sid
+        返回：无
+    */
     private static void selectStu() {
         System.out.println("查询！");
         System.out.println("输入Sid：");
