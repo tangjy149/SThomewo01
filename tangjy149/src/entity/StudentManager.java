@@ -2,6 +2,8 @@ package entity;
 
 import java.util.*;
 
+import javax.lang.model.type.NullType;
+
 public class StudentManager {
     static Scanner shuru = new Scanner(System.in);
     static HashMap<Integer, Student> stu = new HashMap<Integer, Student>();
@@ -44,9 +46,12 @@ public class StudentManager {
     private static void exit() {
         System.exit(0);
     }
-    
-
-    //修改
+    /*
+        8.函数是否已经有文档注释？（功能、输入、返回及其他可选）
+        功能：修改信息
+        输入：sid
+        返回：无
+    */
     private static void updateStu() {
         System.out.println("修改！");
         System.out.println("输入Sid：");
@@ -71,8 +76,12 @@ public class StudentManager {
         return ;
         
     }
-
-    //删除
+    /*
+        8.函数是否已经有文档注释？（功能、输入、返回及其他可选）
+        功能：删除信息
+        输入：sid
+        返回：无
+    */
     private static void deleteStu() {
         System.out.println("删除！");
         System.out.println("输入Sid：");
@@ -106,30 +115,45 @@ public class StudentManager {
         System.out.println("查询！");
         System.out.println("输入Sid：");
         Integer id = shuru.nextInt();
-        int t = 0;
-        for (Map.Entry<Integer,Student> entry : stu.entrySet()) {
-            if (id.equals(entry.getKey()))//比较内容是否存在，是的话打印
-            {
-                t++;
-                System.out.print("学生ID：" + entry.getValue().getSid()
-                        + ", 学生姓名 ： " + entry.getValue().getSname()
-                        + ", 学生出生日期 ： " + entry.getValue().getSbirthDay()
-                );
-                if (entry.getValue().getSsex()) {
-                    System.out.println(", 学生性别 ： 男");
-                } else {
-                    System.out.println(", 学生性别 ： 女");
+         /*
+        43.入口对象是否都被进行了判断不为空
+        */
+        if(id!=null){
+            int t = 0;
+            for (Map.Entry<Integer,Student> entry : stu.entrySet()) {
+                if (id.equals(entry.getKey()))//比较内容是否存在，是的话打印
+                {
+                    t++;
+                    System.out.print("学生ID：" + entry.getValue().getSid()
+                            + ", 学生姓名 ： " + entry.getValue().getSname()
+                            + ", 学生出生日期 ： " + entry.getValue().getSbirthDay()
+                    );
+                    if (entry.getValue().getSsex()) {
+                        System.out.println(", 学生性别 ： 男");
+                    } else {
+                        System.out.println(", 学生性别 ： 女");
+                    }
+                    System.out.println("查询成功!");
                 }
-                System.out.println("查询成功!");
             }
+                if (t==0){
+                    System.out.println("没有相关内容！");
+            }
+        }else{
+            System.out.println("sid为空，修改失败");
         }
-            if (t==0)
-            {
-                System.out.println("没有相关内容！");
-            }
+        /*
+        46.是否函数的所有分支都有返回值
+        */
+        return ;
+        
     }
-
-    //添加
+    /*
+        8.函数是否已经有文档注释？（功能、输入、返回及其他可选）
+        功能：添加学生信息
+        输入：id，姓名，性别，出生年月
+        返回：无
+    */
     private static void addStu() {
         System.out.println("添加！");
         System.out.print("请依次输入学生ID 姓名 性别 出生年月\n");
